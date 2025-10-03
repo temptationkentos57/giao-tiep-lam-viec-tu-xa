@@ -17,6 +17,12 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/giao-tiep
   .then(() => console.log('Kết nối đến MongoDB thành công!'))
   .catch(err => console.log(err));
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
 io.on('connection', (socket) => {
     console.log('Người dùng đã kết nối: ' + socket.id);
 
