@@ -14,7 +14,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/remote-work-communication';
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
   .then(() => console.log('Successfully connected to MongoDB!'))
   .catch(err => console.log(err));
 
