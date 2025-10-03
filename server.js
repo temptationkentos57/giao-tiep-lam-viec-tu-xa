@@ -26,7 +26,7 @@ app.get('/health', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).json({ error: 'Something broke!', details: err.message });
+    res.status(500).json({ error: 'Something broke!', details: err.message, method: req.method, path: req.originalUrl });
 });
 
 io.on('connection', (socket) => {
