@@ -25,13 +25,13 @@ app.use((err, req, res, next) => {
 });
 
 io.on('connection', (socket) => {
-    console.log('Người dùng đã kết nối: ' + socket.id);
+    console.log('User connected: ' + socket.id);
 
     socket.on('disconnect', () => {
-        console.log('Người dùng đã ngắt kết nối: ' + socket.id);
+        console.log('User disconnected: ' + socket.id);
     });
 });
 
 server.listen(PORT, () => {
-    console.log(`Máy chủ đang chạy trên http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
